@@ -31,13 +31,7 @@ class LinkedList {
         }
     };
 
-in{
-    "C_Cpp.default.includePath": [
-      "${workspaceFolder}/**",
-      "C:/path/to/your/compiler/include",
-      "C:/path/to/your/compiler/lib"
-    ]
-  }t main() {
+int main() {
 
     LinkedList* primeiroNo = new LinkedList(4);
         
