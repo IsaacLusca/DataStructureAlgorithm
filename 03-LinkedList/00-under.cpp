@@ -22,17 +22,24 @@ class LinkedList {
         int length;
 
     // Constructor
-    LinkedList(int value) {
-        Node* newNode = new Node(value);
-        head = newNode;
-        tail = newNode;
-        length = 1;
-    }
-};
+    public:
+        LinkedList(int value) {
+            Node* newNode = new Node(value);
+            head = newNode;
+            tail = newNode;
+            length = 1;
+        }
+    };
 
-int main() {
+in{
+    "C_Cpp.default.includePath": [
+      "${workspaceFolder}/**",
+      "C:/path/to/your/compiler/include",
+      "C:/path/to/your/compiler/lib"
+    ]
+  }t main() {
 
-
-
+    LinkedList* primeiroNo = new LinkedList(4);
+        
     return 0;
 }
