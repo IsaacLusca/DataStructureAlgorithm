@@ -140,7 +140,26 @@ class LinkedList {
             }
         }
 
+        // Sem usar o pre para inserir
 
+        bool inserir(int index, int value) {
+            if(index < 0 || index >= length) return false;
+            if(index == 0) {
+                prepend(value);
+                return true;
+            }
+            if(index == length) {
+                append(value);
+                return true;
+            } else{
+                Node* newNode = new Node(value);
+                Node* temp = get(index - 1);
+                newNode->next = temp->next;
+                temp->next = newNode;
+                length++;
+                return true;
+            }
+        }
 };
 
 int main() {
@@ -168,6 +187,8 @@ int main() {
     cout<< endl;    
 
     newList->insert(2, 300);
+    newList->inserir(4, 667);
+    newList->inserir(1, 668);
     newList->printList();
     
     cout << endl;
