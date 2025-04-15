@@ -12,21 +12,21 @@ class Node {
             next = nullptr;
         }
 };
+
 class LinkedList {
     private:
-        Node* head;
         Node* tail;
+        Node* head;
         int length;
-
+    
     public:
-        // Criando o primeiro nó da lista
         LinkedList(int value) {
             Node* newNode = new Node(value);
             tail = newNode;
             head = newNode;
             length = 1;
         }
-        // Func para deletar a lista
+
         ~LinkedList () {
             Node* temp = head;
             while(head) {
@@ -37,17 +37,14 @@ class LinkedList {
             }
         }
 
-        // Func para imprimir
-
         void printList() {
             Node* temp = head;
             while(temp) {
                 cout << temp->value << " ";
                 temp = temp->next;
             }
-            cout << endl;
         }
-        // Adicionar nó no final da lista
+        
         void append(int value) {
             Node* newNode = new Node(value);
             if (length == 0) {
@@ -60,24 +57,6 @@ class LinkedList {
             length++;
         }
 
-        // Deletar o último:
-        void deleteLast() {
-            if (length == 0) return;
-            if (length == 1) {
-                head = nullptr;
-                tail = nullptr;
-            } else {
-                Node* temp = head;
-                while(temp->next != tail) {
-                    temp = temp->next;                  
-                }
-                delete tail;
-                tail = temp;
-                tail->next = nullptr;
-            }
-            length--;
-        }
-        // Prepend/acrescentar no começo
         void prepend(int value) {
             Node* newNode = new Node(value);
             if (length == 0) {
@@ -89,24 +68,51 @@ class LinkedList {
             }
             length++;
         }
-};
 
+        void getLength() {
+            cout << length << endl;
+        }
+
+        void deleteLast() {
+            if (length == 0) return;
+            if (length == 1) {
+                head = nullptr;
+                tail= nullptr;
+            } else {
+                Node* temp = head;
+                while(temp->next != tail) {
+                    temp = temp->next;
+                }
+                delete tail;
+                tail = temp;
+                tail->next = nullptr;
+            }
+            length--;
+        }
+
+        void deleteFirst() {
+            Node* temp = head;
+            head = head->next;
+            delete temp;
+        }
+
+};
 
 int main() {
 
-    LinkedList* newList = new LinkedList(0);
-    newList->append(1);
-    newList->append(2);
-    newList->append(3);
+    LinkedList* newList = new LinkedList(10);
     newList->append(4);
     newList->append(5);
-    newList->append(6);
-    newList->prepend(100);
-    newList->deleteLast();
-    newList->deleteLast();
+    newList->append(7);
+    newList->append(8);
+    newList->append(5);
 
-    cout << "Lista: ";
+    newList->deleteLast();
+    newList->deleteFirst();
+    newList->deleteFirst();
+
     newList->printList();
+    cout << endl;
     delete newList;
     return 0;
 }
