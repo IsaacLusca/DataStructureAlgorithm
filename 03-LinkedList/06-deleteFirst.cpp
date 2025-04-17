@@ -91,9 +91,17 @@ class LinkedList {
         }
 
         void deleteFirst() {
-            Node* temp = head;
-            head = head->next;
-            delete temp;
+            if(length == 0) return;
+            if(length == 1) {
+                head = nullptr;
+                tail = nullptr;
+                
+            } else  {
+                Node* temp = head;
+                head = head->next;
+                delete temp;    
+            }
+            length--;
         }
 
 };
