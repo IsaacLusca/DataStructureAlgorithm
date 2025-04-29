@@ -34,7 +34,16 @@ class HashTable {
                 }
             }
         }
-};
+
+        int hash(string key) {
+            int hash = 0;
+            for(int i = 0; i < key.length(); i++) {
+                int asciiValue = int(key[i]);
+                hash = (hash + asciiValue * 23) % SIZE;
+            }
+            return hash;
+        }
+    };
 
 
 int main() {
@@ -42,6 +51,7 @@ int main() {
     HashTable* newHash = new HashTable();
 
     newHash->printTable();
+    
 
    return 0;
 }
