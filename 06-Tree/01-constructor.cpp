@@ -2,6 +2,9 @@
 
 using namespace std;
 
+int deep = 0;
+
+// Constructor
 class Node {
     public:
         int value;
@@ -23,6 +26,7 @@ class BinarySearchTree {
             root = nullptr;
         }
 
+        // Insert
         void insert(int value) {
             Node* newNode = new Node(value);
         
@@ -74,6 +78,25 @@ class BinarySearchTree {
                 }
             }
         }
+
+        bool contains(int value) {
+            // Verificação opcional
+            if (root == nullptr) return false;
+            Node* temp = root;
+
+            while(temp) {
+                if (value < temp->value) {
+                    temp = temp->left;
+                    deep++;
+                } else if (value > temp->value) {
+                    temp = temp->right;
+                    deep++;
+                }
+                deep++;
+                return true;
+            }
+            return false;
+        }
         
 };
 
@@ -106,7 +129,12 @@ int main() {
     myBSTs->insertB(82);
 
     myBSTs->insertB(27);
+    
     cout << myBSTs->root->left->right->value << endl;
     
+    cout << "Valor encontrado: ";
+    cout << myBST->contains(27) << endl;
+
+    cout << "Deep: " << deep << endl;
     return 0;
 }
