@@ -22,6 +22,33 @@ class BinarySearchTree {
         BinarySearchTree(){
             root = nullptr;
         }
+
+        void insert(int value) {
+            Node* newNode = new Node(value);
+        
+            if (root == nullptr) {
+                root = newNode;
+                return;
+            }
+        
+            Node* temp = root;
+            while (true) {
+                if (value <= temp->value) {
+                    if (temp->left == nullptr) {
+                        temp->left = newNode;
+                        return;
+                    }
+                    temp = temp->left;
+                } else {
+                    if (temp->right == nullptr) {
+                        temp->right = newNode;
+                        return;
+                    }
+                    temp = temp->right;
+                }
+            }
+        }
+        
 };
 
 int main() {
