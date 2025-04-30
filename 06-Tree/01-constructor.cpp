@@ -25,116 +25,11 @@ class BinarySearchTree {
         BinarySearchTree(){
             root = nullptr;
         }
-
-        // Insert
-        void insert(int value) {
-            Node* newNode = new Node(value);
-        
-            if (root == nullptr) {
-                root = newNode;
-                return;
-            }
-        
-            Node* temp = root;
-            while (true) {
-                if (value <= temp->value) {
-                    if (temp->left == nullptr) {
-                        temp->left = newNode;
-                        return;
-                    }
-                    temp = temp->left;
-                } else {
-                    if (temp->right == nullptr) {
-                        temp->right = newNode;
-                        return;
-                    }
-                    temp = temp->right;
-                }
-            }
-        }
-
-        bool insertB(int value) {
-            Node* newNode = new Node(value);
-
-            if (root == nullptr) {
-                root = newNode;
-                return true;
-            }
-            Node* temp = root;
-            while(true) {
-                if(newNode->value == temp->value) return false;
-                if(newNode->value < temp->value) {
-                    if(temp->left == nullptr) {
-                        temp->left = newNode;
-                        return true;
-                    }
-                    temp = temp->left;
-                } else {
-                    if (temp->right == nullptr) {
-                        temp->right = newNode;
-                        return true;
-                    }
-                    temp = temp->right;
-                }
-            }
-        }
-
-        bool contains(int value) {
-            // Verificação opcional
-            if (root == nullptr) return false;
-            Node* temp = root;
-
-            while(temp) {
-                if (value < temp->value) {
-                    temp = temp->left;
-                    deep++;
-                } else if (value > temp->value) {
-                    temp = temp->right;
-                    deep++;
-                }
-                deep++;
-                return true;
-            }
-            return false;
-        }
-        
 };
 
 int main() {
 
     BinarySearchTree* myBST = new BinarySearchTree();
-    BinarySearchTree* myBSTs = new BinarySearchTree();
 
-    cout << "Root: " << myBST->root << endl;
-
-    cout << "Árvore: " << endl;
-    myBST->insert(47);
-    myBST->insert(21);
-    myBST->insert(76);
-    myBST->insert(18);
-    myBST->insert(52);
-    myBST->insert(82);
-    
-    myBST->insert(27);
-    
-    cout << myBST->root->left->right->value << endl;
-    
-    
-    cout << "Árvore bool: " << endl;
-    myBSTs->insertB(47);
-    myBSTs->insertB(21);
-    myBSTs->insertB(76);
-    myBSTs->insertB(18);
-    myBSTs->insertB(52);
-    myBSTs->insertB(82);
-
-    myBSTs->insertB(27);
-    
-    cout << myBSTs->root->left->right->value << endl;
-    
-    cout << "Valor encontrado: ";
-    cout << myBST->contains(27) << endl;
-
-    cout << "Deep: " << deep << endl;
     return 0;
 }
