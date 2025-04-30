@@ -120,11 +120,13 @@ class LinkedList {
             return true;
         } 
         bool set(int index, int value) {
-            if(index < 0 || index >= length) return false;
-            
             Node* temp = get(index);
-            temp->value = value;
-            return true;
+
+            if(temp != nullptr) {
+                temp->value = value;
+                return true;
+            }
+            return false;
         }
 
         bool insert(int index, int value){
@@ -170,6 +172,20 @@ class LinkedList {
             length--;
 
             return true;
+        }
+
+        // sem ser do tipo bool:
+        void deleteNode2(int index) {
+            if(index < 0 || index >= length) return;
+            if(index == 0) return deleteFirst();
+            if(index == length - 1) return deleteLast();
+            
+            Node* pre = get(index - 1);
+            Node* temp = pre->next;
+            
+            pre->next = temp->next;
+            delete temp;
+            length--;
         }
 };
 
