@@ -35,29 +35,29 @@ class HashTable {
             }
         }
 
-        int hash(string key) {
-            int hash = 0;
-            for(int i = 0; i < key.length(); i++) {
-                int asciiValue = int(key[i]);
-                hash = (hash + asciiValue * 23) % SIZE;
-            }
-            return hash;
-        }
+        // int hash(string key) {
+        //     int hash = 0;
+        //     for(int i = 0; i < key.length(); i++) {
+        //         int asciiValue = int(key[i]);
+        //         hash = (hash + asciiValue * 23) % SIZE;
+        //     }
+        //     return hash;
+        // }
 
-        void set(string key, int value) {
-            int index = hash(key);
-            Node* newNode = new Node(key, value);
+        // void set(string key, int value) {
+        //     int index = hash(key);
+        //     Node* newNode = new Node(key, value);
 
-            if (dataMap[index] == nullptr) {
-                dataMap[index] = newNode;
-            } else {
-                Node* temp = dataMap[index];
-                while (temp->next != nullptr) {
-                    temp = temp->next;
-                }
-                temp->next = newNode;
-            }
-        }
+        //     if (dataMap[index] == nullptr) {
+        //         dataMap[index] = newNode;
+        //     } else {
+        //         Node* temp = dataMap[index];
+        //         while (temp->next != nullptr) {
+        //             temp = temp->next;
+        //         }
+        //         temp->next = newNode;
+        //     }
+        // }
 };
 
 
