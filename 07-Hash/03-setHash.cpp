@@ -44,9 +44,35 @@ class HashTable {
             }
             return hash;
         }
+
+        void set(string key, int value) {
+            int index = hash(key);
+
+            Node* newNode = new Node(key, value);
+            if(dataMap[index] == nullptr) {
+                dataMap[index] = newNode;
+            } else {
+                Node* temp = dataMap[index];
+                while(temp->next) {
+                    temp = temp->next;
+                }
+                temp->next = newNode;
+            }
+        }
 };
 
 int main() {
+
+    HashTable* myHash = new HashTable();
+
+    myHash->set("nails", 100);
+    myHash->set("tile", 50);
+    myHash->set("lumber", 80);
+
+    myHash->set("bolts", 200);
+    myHash->set("screws", 140);
+
+    myHash->printTable();
 
     return 0;
 }
