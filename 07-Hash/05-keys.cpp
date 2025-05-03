@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -37,7 +38,6 @@ class HashTable {
 
         int hash(string key) {
             int hash = 0;
-
             for(int i = 0; i < key.length(); i++) {
                 hash = (hash + int(key[i]) * 23) % SIZE;
             }
@@ -48,11 +48,10 @@ class HashTable {
             int index = hash(key);
 
             Node* newNode = new Node(key, value);
-            if(dataMap[index] == nullptr) {
+            if (dataMap[index] == nullptr) {
                 dataMap[index] = newNode;
             } else {
                 Node* temp = dataMap[index];
-
                 while(temp->next) {
                     temp = temp->next;
                 }
@@ -64,12 +63,24 @@ class HashTable {
             int index = hash(key);
 
             Node* temp = dataMap[index];
-
             while(temp) {
                 if(temp->key == key) return temp->value;
                 temp = temp->next;
             }
             return 0;
+        }
+
+        vector<string> keys() {
+            vector<string> allKeys;
+
+            for(int i = 0; i < SIZE; i++) {
+                Node* temp = dataMap[i];
+                while(temp) {
+                    allKeys.push_back(temp->key);
+                    temp = temp->next;
+                }
+            }
+            return allKeys;
         }
 };
 
@@ -88,6 +99,12 @@ int main() {
 
     cout<< myHash->get("screws") << endl;
     cout<< myHash->get("screwsn") << endl;
+
+    vector<string> myKeys = myHash->keys();
+
+    for(auto key : myKeys) {
+        cout << key << " ";
+    }
 
     return 0;
 }
