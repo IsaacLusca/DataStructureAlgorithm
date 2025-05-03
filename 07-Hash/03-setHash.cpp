@@ -9,7 +9,7 @@ class Node {
         Node* next;
 
         Node(string key, int value) {
-            this->key = key;
+            this->key = key;          
             this->value = value;
             next = nullptr;
         }
@@ -37,9 +37,10 @@ class HashTable {
 
         int hash(string key) {
             int hash = 0;
+
             for(int i = 0; i < key.length(); i++) {
-                int asciiValue = int(key[i]);
-                hash = (hash + asciiValue * 23) % SIZE;
+                int ascii = int(key[i]);
+                hash = (hash + ascii * 23) % SIZE;    
             }
             return hash;
         }
