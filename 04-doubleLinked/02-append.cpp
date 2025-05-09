@@ -1,0 +1,65 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+class Node{
+    public:
+        int value;
+        Node* next;
+        Node* prev;
+
+        Node(int value) {
+            this->value = value;
+            next = nullptr;
+            prev = nullptr;
+        }
+};
+
+class DoublyLinkedList{
+    private:
+        Node* head;
+        Node* tail;
+        int length;
+
+    public:
+        DoublyLinkedList(int value) {
+            Node* newNode = new Node(value);
+            head = newNode;
+            tail = newNode;
+            length = 1;
+        }
+
+        void printList() {
+            Node* temp = head;
+
+            while(temp) {
+                cout << temp->value << " ";
+                temp = temp->next;
+            }
+        }
+
+        void append(int value) {
+            Node* newNode = new Node(value);
+            if (length == 0) {
+                head = newNode; 
+                tail = newNode;
+            } else {
+                tail->next = newNode;
+                newNode->prev = tail;
+                tail = newNode;
+            }
+            length++;
+        }
+};
+
+int main() {
+
+    DoublyLinkedList* newDLL = new DoublyLinkedList(10);
+    
+    newDLL->append(11);
+    newDLL->append(13);
+    newDLL->append(15);
+    
+    newDLL->printList();
+    return 0;
+}
