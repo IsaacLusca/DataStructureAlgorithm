@@ -7,6 +7,7 @@ Bem-vindo ao repositório de anotações sobre **estruturas de dados** e **algor
 - Compartilhar anotações e explicações sobre conceitos fundamentais de estruturas de dados e algoritmos.
 - Demonstrar implementações práticas utilizando C++.
 - Servir como uma referência de estudo para quem está se aprofundando no tema.
+- Uma forma interessante de fixação do conteúdo: para cada classe, struct e funções novas, crie um novo arquivo e reescreva as funções anteriores.
 
 
 
