@@ -46,6 +46,34 @@ class Queue {
             }
             length++;
         }
+
+        //  func para remover o primeiro no:
+
+        int dequeue() {
+            if(length == 0) return INT_MIN;
+            Node* temp = first;
+            int dequeueVal = first->value;
+            if(length == 1) {
+                first = last = nullptr;
+            } else {
+                first = first->next;
+            }
+            delete temp;
+            length--;
+            return dequeueVal;
+        }
+
+        void dequeueVoid() {
+            if(length == 0) return;
+            Node* temp = first;
+            if(length == 1) {
+                first = last = nullptr;
+            } else {
+                first = first->next;
+            }
+            delete temp;
+            length--;
+        }
 };
 
 int main() {
@@ -55,6 +83,9 @@ int main() {
     newQueue->enqueue(12);
     newQueue->enqueue(14);
     newQueue->enqueue(2);
+
+    // removendo o primeiro valor, no caso 10.
+    newQueue->dequeueVoid();
     newQueue->print();
 
     return 0;
