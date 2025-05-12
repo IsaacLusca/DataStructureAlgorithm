@@ -4,6 +4,7 @@ using namespace std;
 
 // Será feito utilizando listas encadeadas
 // A classe Node será basicamente identica a de uma lista padrão
+// ESTRUTURA DO TIPO LIFO - PRIMEIRO Q ENTRA, ULTIMO QUE SAI
 class Node {
     public:
         int value;

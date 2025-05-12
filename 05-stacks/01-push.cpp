@@ -34,7 +34,7 @@ class Stack {
             }
         }
 
-        void pop(int value) {
+        void push(int value) {
             Node* newNode = new Node(value);
             newNode->next = top;
             top = newNode;
@@ -46,9 +46,9 @@ int main() {
 
     Stack* newStack = new Stack(4);
 
-    newStack->pop(5);
-    newStack->pop(7);
-    newStack->pop(10);
+    newStack->push(5);
+    newStack->push(7);
+    newStack->push(10);
 
     newStack->printStack();
 
