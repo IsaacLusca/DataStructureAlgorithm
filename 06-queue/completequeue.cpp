@@ -34,12 +34,27 @@ class Queue {
                 temp = temp->next;
             }
         }
+
+        // Func para adicionar item a fila:
+        void enqueue(int value) {
+            Node* newNode = new Node(value);
+            if(length == 0) {
+                first = last = newNode;
+            } else {
+                last->next = newNode;
+                last = newNode;
+            }
+            length++;
+        }
 };
 
 int main() {
 
     Queue* newQueue = new Queue(10);
 
+    newQueue->enqueue(12);
+    newQueue->enqueue(14);
+    newQueue->enqueue(2);
     newQueue->print();
 
     return 0;
