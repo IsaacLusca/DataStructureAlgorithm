@@ -32,6 +32,16 @@ class Graph {
             return false;
         }
 
+        bool removeVertex(string vertex) {
+            if(adjList.count(vertex) == 0) return false;
+
+            for(auto otherVertex:adjList.at(vertex)) {
+                adjList.at(otherVertex).erase(vertex);
+            }
+            adjList.erase(vertex);
+            return true;
+        }
+
         void printGraph() {
             for (const auto& pair : adjList) {
                 const string& vertex = pair.first;
@@ -59,9 +69,9 @@ int main() {
 
     newGraph->printGraph();
     
-    cout << "Após remover a aresta: " << endl;
+    cout << "Após remover o vértice: " << endl;
 
-    newGraph->removeEdge("C", "A");
+    newGraph->removeVertex("C");
 
     newGraph->printGraph();
     return 0;
