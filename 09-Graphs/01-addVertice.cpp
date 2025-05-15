@@ -7,7 +7,7 @@ class Graph {
     private:
     // essa lista de adjacencia é representada por um mapa de conjuntos
     // onde a chave é o vertice e o valor é um conjunto de vertices adjacentes
-    unordered_map<string, unordered_set<string> > adjList;
+        unordered_map<string, unordered_set<string> > adjList;
     // Representando essa linha: {"A", []}
     
     public:
